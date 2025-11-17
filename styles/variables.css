@@ -12,4 +12,6 @@
   --main-font: "IBM Plex mono";
   --bg-image: url(../images/cover-image-dark.png);
   --padding: 20px;
+  --hf-margin: 60px;
+  --section-margin: 80px;
 }
