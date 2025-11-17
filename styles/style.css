@@ -204,7 +204,7 @@
   block-size: max(100vi, min-content);
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 260fr 315fr 433fr;
-  gap: 20px;
+  gap: var(--padding);
 }
 
 .main__title-image {
