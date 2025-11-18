@@ -18,7 +18,7 @@
   block-size: 100vb;
   min-block-size: 668px;
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 10fr 4fr 10fr;
   padding: var(--padding);
   margin-block-end: var(--hf-margin);
 }
@@ -31,7 +31,7 @@
   align-self: end;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 23px;
+  gap: 0.625rem;
 }
 
 .header__theme-menu-button {
@@ -39,6 +39,8 @@
   background-color: transparent;
   color: var(--accent-text-color);
   text-transform: lowercase;
+  padding-inline: 0.75rem;
+  cursor: pointer;
 }
 
 .header__theme-menu-button:hover {
@@ -51,6 +53,7 @@
 
 .header__theme-menu-button_active {
   border: 1px solid var(--accent-text-color);
+  pointer-events: none;
 }
 
 .header__title {
@@ -59,6 +62,8 @@
 
 .title-decor {
   font-size: 1.125rem;
+  color: var(--subtitle-color);
+  background-color: var(--accent-color);
 }
 
 .title {
@@ -82,8 +87,6 @@
   align-self: start;
   block-size: fit-content;
   grid-column: 2;
-  color: var(--subtitle-color);
-  background-color: var(--accent-color);
   font-weight: bold;
 }
 
@@ -131,7 +134,7 @@
   inset-inline-end: -1em;
   inset-block: 0.5em;
   background-color: var(--accent-text-color);
-  box-shadow: 0 0 0.5em 0.25em var(--accent-text-color);
+  box-shadow: 0 0 0.2em 0.1em var(--accent-text-color);
 }
 
 .main {
@@ -141,14 +144,22 @@
   margin-block-end: var(--hf-margin);
 }
 
-.main__why {
+.main__section {
   display: grid;
-  grid-template-columns: 1fr 2fr;
   gap: 20px;
+}
+
+.why-container {
+  grid-template-columns: 1fr 2fr;
 }
 
 .main__title {
   color: var(--accent-text-color);
+  font-size: 1.125rem;
+}
+
+.main__card-text:not(:last-of-type) {
+  margin-block-end: 10px;
 }
 
 .why {
@@ -156,47 +167,31 @@
 }
 
 .main__card-title {
-  color: var(--subtitle-color);
-  background-color: var(--accent-color);
   margin-block-end: 10px;
 }
 
-.main__what {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.weight-normal {
+  font-weight: normal;
+}
+
+.what-container {
+  grid-template-columns: repeat(auto-fit, 1fr);
 }
 
 .what {
   grid-row: 2;
 }
 
-.main__how {
-  display: grid;
+.how-container {
   grid-template-columns: 1fr 2fr;
-  gap: 20px;
 }
 
 .how {
   grid-column: 2;
 }
 
-.main__title-how-span {
-  color: var(--accent-text-color);
+.how-span {
   grid-row: 1 / 7;
-}
-
-.main__title-how {
-  color: var(--subtitle-color);
-  background-color: var(--accent-color);
-  block-size: fit-content;
-}
-
-.main__card-title-how {
-  font-weight: normal;
-  color: var(--subtitle-color);
-  background-color: var(--accent-color);
-  margin-block-end: 10px;
 }
 
 .main__images-container {
@@ -207,9 +202,7 @@
   gap: var(--padding);
 }
 
-.main__title-image {
-  color: var(--subtitle-color);
-  background-color: var(--accent-color);
+.margin {
   margin-block-end: var(--padding);
 }
 
@@ -243,11 +236,15 @@
 }
 
 .link:hover {
-  text-decoration: underline;
+  border-block-end: 1px solid var(--accent-color);
 }
 
 .link:focus {
-  border-block-end: 1 px solid var(--accent-color);
+  outline: none;
+}
+
+.link:focus-visible {
+  outline: 1px solid var(--accent-color);
 }
 
 .link:visited {
@@ -263,6 +260,14 @@
 }
 
 @media (width < 1024px) {
+  .header {
+    grid-template-rows: 5fr 1fr 5fr;
+  }
+
+  .title {
+    margin-inline-start: -0.18em;
+  }
+
   .header__theme-menu {
     justify-self: end;
     align-self: center;
@@ -275,11 +280,11 @@
     gap: 10px;
   }
 
-  .main__what .main__title {
+  .what-container .main__title {
     inline-size: 25vi;
   }
 
-  .main__what {
+  .what-container {
     grid-template-columns: 1fr;
   }
 
@@ -297,6 +302,7 @@
 
   .title {
     font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+    margin-inline-start: 0;
   }
 
   .header__text-container {
@@ -307,11 +313,11 @@
     grid-column: auto;
   }
 
-  .main__what .main__title {
+  .what-container .main__title {
     inline-size: auto;
   }
 
-  .main__why {
+  .why-container {
     grid-template-columns: 1fr;
   }
 
@@ -319,7 +325,7 @@
     grid-column: auto;
   }
 
-  .main__how {
+  .how-container {
     grid-template-columns: 1fr;
   }
 
@@ -327,7 +333,7 @@
     grid-column: auto;
   }
 
-  .main__title-how-span {
+  .how-span {
     grid-row: auto;
   }
 
