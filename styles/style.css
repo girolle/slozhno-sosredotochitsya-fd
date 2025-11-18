@@ -175,7 +175,8 @@
 }
 
 .what-container {
-  grid-template-columns: repeat(auto-fit, 1fr);
+  grid-template-columns: repeat(auto-fill, 1fr);
+  grid-auto-flow: column;
 }
 
 .what {
@@ -184,6 +185,10 @@
 
 .how-container {
   grid-template-columns: 1fr 2fr;
+}
+
+.how-container .main__card-title {
+  margin: 0;
 }
 
 .how {
